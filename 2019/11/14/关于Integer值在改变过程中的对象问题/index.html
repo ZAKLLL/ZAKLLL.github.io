@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>关于Integer值在改变过程中的对象问题 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;index.html">
+  <meta name="description" content="前阵子和同学交流的时候发现了这样一段代码，没有按照预定想法进行输出： 12345678910111213141516171819202122232425public class Demo implements Runnable &amp;#123;    private Integer a = 0;    @Override    public void run() &amp;#123;        for (">
+<meta name="keywords" content="多线程 Integer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Integer值在改变过程中的对象问题">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;14&#x2F;%E5%85%B3%E4%BA%8EInteger%E5%80%BC%E5%9C%A8%E6%94%B9%E5%8F%98%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E9%97%AE%E9%A2%98&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前阵子和同学交流的时候发现了这样一段代码，没有按照预定想法进行输出： 12345678910111213141516171819202122232425public class Demo implements Runnable &amp;#123;    private Integer a = 0;    @Override    public void run() &amp;#123;        for (">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-14T07:37:42.552Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -149,36 +153,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-关于Integer值在改变过程中的对象问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/14/%E5%85%B3%E4%BA%8EInteger%E5%80%BC%E5%9C%A8%E6%94%B9%E5%8F%98%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2019-11-14T07:12:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/14/%E5%85%B3%E4%BA%8EInteger%E5%80%BC%E5%9C%A8%E6%94%B9%E5%8F%98%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E9%97%AE%E9%A2%98/">关于Integer值在改变过程中的对象问题</a>
+    <h1 class="article-title" itemprop="name">
+      关于Integer值在改变过程中的对象问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/11/14/%E5%85%B3%E4%BA%8EInteger%E5%80%BC%E5%9C%A8%E6%94%B9%E5%8F%98%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-11-14T07:12:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前阵子和同学交流的时候发现了这样一段代码，没有按照预定想法进行输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer a = <span class="number">0</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">1_000_000</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (a) &#123;</span><br><span class="line">                a++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Demo demo = <span class="keyword">new</span> Demo();</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(demo);</span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(demo);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t1.join();</span><br><span class="line">        t2.join();</span><br><span class="line">        System.out.println(demo.a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output</span></span><br><span class="line"><span class="number">1145098</span></span><br></pre></td></tr></table></figure>
+
+<p>一开始想是不是因为<strong>synchronized</strong>住了对象a本身,然后又对a进行了修改，这样的操作会导致原子性丢失。于是尝试了将a放入一个单独的对象。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//    private Integer a = 0;</span></span><br><span class="line">    <span class="keyword">private</span> A a = <span class="keyword">new</span> A();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> value = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">1_000_000</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (a) &#123;</span><br><span class="line">                a.value++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Demo demo = <span class="keyword">new</span> Demo();</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(demo);</span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(demo);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t1.join();</span><br><span class="line">        t2.join();</span><br><span class="line">        System.out.println(demo.a.value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//output</span></span><br><span class="line"><span class="number">200000</span></span><br></pre></td></tr></table></figure>
+
+<p>神奇的是代码好像正常运行了，那么问题是出现在哪儿呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String a=<span class="keyword">new</span> String(<span class="string">"Hello World"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码到底创建了几个对象？这是一个很经典的问题？</p>
+<ul>
+<li>当JVM常量池中不存在“Hello world”常量时，该语句创建了两个对象<ul>
+<li>在常量池创建“Hello world”对象</li>
+<li>在堆中创建new String()对象，并从常量池取值到new String中，完成赋值。</li>
+</ul>
+</li>
+<li>当常量池中已经存在“Hello world”时：<ul>
+<li>在堆中创建new String()对象，并从常量池取值到new String中，完成对象创建。</li>
+</ul>
+</li>
+</ul>
+<p>那这段代码创建的一个对象或者两个对象跟这次遇到的多线程问题有关吗？</p>
+<ul>
+<li><p>在JVM中所有的基本数据类型的包装类型都拥有自己的常量池( Byte,Short,Integer,Character,Long ),该常量池仅缓存<strong>-128-127</strong>之间的值，也就是说，当创建的值是在该范围中，并且修改的操作不超过该范围，则对象依然是同一个对象，只是对象的值发生了改变。</p>
+</li>
+<li><p>在这个情景中：</p>
+<ul>
+<li><p>Integer 的对象自增（or 其他运算）后还是同一个对象吗？<br>当声明一个Integer类型的变量时，例如Integer a = 200;：</p>
+<p>当对 a 进行运算时，如果其结果值总是在 [-128, 127] 之间时，这个值会直接从一个缓存数组中取出，这时取出来的都是同一个对象，而不会重新创建一个新的对象。</p>
+<p>如果运算后的结果超出了这个范围，就会每次重新创建一个对象出来，新创建的两个对象也肯定是不一样的。</p>
+</li>
+<li><p>所以虽然对象a被<strong>synchronized</strong>住了，但是a的对象本身发生了改变，简而言之，两个线程在进行不同的操作时锁定的不是同一个对象，就会发生原子性问题。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -190,57 +228,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/14/%E5%85%B3%E4%BA%8EInteger%E5%80%BC%E5%9C%A8%E6%94%B9%E5%8F%98%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/11/My-first-Hexo-Blog/" class="archive-article-date">
-  	<time datetime="2019-11-11T13:05:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/11/My-first-Hexo-Blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">My first Hexo Blog</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/11/My-first-Hexo-Blog/">My first Hexo Blog</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">First/Hexo/Blog/HelloWorld</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -263,8 +350,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
