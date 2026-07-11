@@ -4,8 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>张家魁 · Zakl — AI Infrastructure Engineer</title>
-<meta name="description" content="张家魁（Zakl）— AI Infrastructure / Agent Platform Engineer。5 年后端分布式系统经验 + AI Agent 基础设施研发经验。">
+<meta name="description" content="张家魁（Zakl）— AI Infrastructure / Agent Platform Engineer。多年后端分布式系统经验，专注 LLM Agent 基础设施研发。">
 <link rel="icon" href="data:,">
+<script>
+  (function () {
+    var h = new Date().getHours();
+    document.documentElement.setAttribute("data-theme", (h >= 6 && h < 18) ? "day" : "night");
+  })();
+</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,42 +25,41 @@
     <a href="#about">关于</a>
     <a href="#experience">经历</a>
     <a href="#skills">技能</a>
+    <a href="#knowledge">知识体系</a>
     <a href="#projects">项目</a>
     <a href="#contact">联系</a>
+    <span class="theme-indicator" id="themeIndicator" aria-hidden="true"><span class="theme-indicator__dot"></span></span>
   </div>
 </nav>
 
 <header class="hero" id="top">
-  <div class="hero__inner">
-    <p class="hero__eyebrow">Hi, 我是</p>
-    <h1 class="hero__name">张家魁 <span class="hero__alias">/ Zakl</span></h1>
-    <p class="hero__role">AI Infrastructure Engineer · Agent Platform</p>
-    <p class="hero__desc">
-      5 年后端分布式系统经验，近 2 年专注于 LLM Agent 基础设施研发 ——
-      让 Agent 从「能跑通」走到「能稳定跑在生产环境里」。
-    </p>
-    <div class="hero__actions">
-      <a class="btn btn--primary" href="#experience">查看经历</a>
-      <a class="btn btn--ghost" href="https://github.com/ZAKLLL" target="_blank" rel="noopener">GitHub ↗</a>
-    </div>
+  <p class="hero__eyebrow">Hi, 我是</p>
+  <h1 class="hero__name">张家魁 <span class="hero__alias">/ Zakl</span></h1>
+  <p class="hero__role">AI Infrastructure Engineer · Agent Platform</p>
+  <p class="hero__desc">
+    多年后端与分布式系统经验，近两年专注于 LLM Agent 基础设施研发 ——
+    让 Agent 从「能跑通」走到「能稳定跑在生产环境里」。
+  </p>
+  <div class="hero__actions">
+    <a class="btn btn--primary" href="#experience">查看经历</a>
+    <a class="btn btn--ghost" href="https://github.com/ZAKLLL" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
 </header>
 
 <main>
 
-  <section class="section" id="about">
+  <section class="section reveal" id="about">
     <h2 class="section__title"><span class="section__num">01</span>关于我</h2>
     <div class="section__body">
       <p>
         软件工程本科毕业后，从 Java 后端工程师一路做到分布式系统的技术负责人，
-        再转向 LLM Agent 基础设施方向。既写过扛得住百万级流量的支付 / IOT 系统，
+        再转向 LLM Agent 基础设施方向。既写过扛得住高并发流量的交易 / IoT 系统，
         也搭过 Agent 的运行时、编排引擎和沙箱基础设施 —— 对我来说这两件事的内核是相通的：
         <strong>可靠性、可观测性、可扩展性</strong>。
       </p>
       <p>
-        目前在一家媒体科技公司的 AI 基础平台团队，主导 Agent 并发编排引擎与技能 / 工具管理平台的研发，
-        服务于短剧、漫剧、数字人等 AI 内容生产场景。日常工作围绕 Agent Runtime 设计、
-        多 Agent 协作调度、云沙箱隔离、以及基于 Langfuse 的全链路可观测性建设展开。
+        目前专注于 Agent 基础设施方向：并发会话编排、技能 / 工具管理平台、
+        沙箱隔离与全链路可观测性建设，服务于 AI 内容生成类业务场景。
       </p>
       <p>
         业余时间会写一些关于 Agentic 编程工具、上下文工程的技术笔记，
@@ -64,7 +69,7 @@
     </div>
   </section>
 
-  <section class="section" id="experience">
+  <section class="section reveal" id="experience">
     <h2 class="section__title"><span class="section__num">02</span>经历</h2>
     <ol class="timeline">
 
@@ -74,13 +79,13 @@
           <span class="timeline__tag">现职</span>
         </div>
         <h3 class="timeline__role">系统研发工程师 · AI 基础平台</h3>
-        <p class="timeline__org">媒体科技公司 · AI Infra 团队</p>
+        <p class="timeline__org">AI 内容生成方向 · Agent 基础设施团队</p>
         <ul class="timeline__points">
-          <li>主导设计并实现 Agent 并发会话编排引擎 —— 支持自主任务拆解、多子会话并发调度，具备全局并发限流与无状态多 worker 横向扩展能力。</li>
-          <li>负责技能 / 工具管理平台的架构与落地，涵盖版本化发布、多沙箱环境（含 FFmpeg 专用沙箱）按需选择，将新能力交付周期压缩至天级。</li>
-          <li>推动 Agent 服务基于云原生存储的横向扩容方案，落地多实例负载均衡；主导 Langfuse 深度接入与进程级资源监控体系建设。</li>
+          <li>负责 Agent 并发会话编排引擎的设计与实现：任务拆解、多子会话并发调度、无状态多 worker 横向扩展。</li>
+          <li>负责技能 / 工具管理平台的架构：版本化发布、多沙箱环境隔离，缩短新能力的交付周期。</li>
+          <li>推动服务的横向扩容与可观测性建设，引入全链路追踪与进程级资源监控。</li>
         </ul>
-        <div class="timeline__stack">Python · FastAPI · Claude SDK · Langfuse · Redis · 云函数沙箱 · Vue.js</div>
+        <div class="timeline__stack">Python · FastAPI · Claude SDK · Redis · 容器沙箱 · Vue.js</div>
       </li>
 
       <li class="timeline__item">
@@ -88,11 +93,11 @@
           <span class="timeline__time">2025.03 — 2026.04</span>
         </div>
         <h3 class="timeline__role">AI Agent 工程师</h3>
-        <p class="timeline__org">企业级 AI 智能分析平台</p>
+        <p class="timeline__org">企业级智能分析平台方向</p>
         <ul class="timeline__points">
-          <li>重构消息结构与 ReAct 推理流程，新增上下文压缩策略，提升长会话下 Agent 的推理稳定性。</li>
-          <li>设计敏感数据映射与还原机制，构建配套 API，为智能问答场景提供数据脱敏与合规保障。</li>
-          <li>基于 Redis 实现异步工具执行框架，支持远程技能安装与文件管理；完成知识空间与数字员工相关后端服务。</li>
+          <li>重构消息结构与 ReAct 推理流程，引入上下文压缩策略，提升长会话下的推理稳定性。</li>
+          <li>设计敏感数据映射与还原机制，为智能问答场景提供数据脱敏能力。</li>
+          <li>基于 Redis 实现异步工具执行框架，支持远程技能安装与文件管理。</li>
         </ul>
         <div class="timeline__stack">Python · Redis · SQL Agent · ReAct</div>
       </li>
@@ -102,13 +107,13 @@
           <span class="timeline__time">2022.07 — 2025.03</span>
         </div>
         <h3 class="timeline__role">技术负责人 / AI 应用开发工程师</h3>
-        <p class="timeline__org">交通出行 & 数字化平台</p>
+        <p class="timeline__org">交通出行与数字化平台方向</p>
         <ul class="timeline__points">
-          <li>主导设计企业内多 Agent 协作系统，从数据分析助手演进为个人 AI 助理，支持自然语言转 SQL、智能可视化、代码执行等能力。</li>
-          <li>搭建公司级 CI/CD 体系，推动研发全面 DevOps 化，迭代周期缩短约 40%；建设 LLM 驱动的自动代码评审与自动化压测工具链。</li>
-          <li>担任大规模线上交易系统技术负责人：Redisson 分布式锁重构（锁获取成功率 95% → 99.9%）、支付服务容灾切换（恢复时间从分钟级降至秒级）。</li>
+          <li>主导设计多 Agent 协作系统，支持自然语言转 SQL、智能可视化与代码执行等能力。</li>
+          <li>推动研发全流程 DevOps 化，建设 LLM 驱动的自动代码评审与自动化压测工具链。</li>
+          <li>担任大规模线上交易系统的稳定性技术负责人，主导分布式锁优化与支付服务容灾方案。</li>
         </ul>
-        <div class="timeline__stack">Java · Spring Cloud Alibaba · MySQL/PostgreSQL · Redis · RocketMQ · Flink CDC · Kubernetes</div>
+        <div class="timeline__stack">Java · Spring Cloud Alibaba · MySQL/PostgreSQL · Redis · RocketMQ · Kubernetes</div>
       </li>
 
       <li class="timeline__item">
@@ -116,10 +121,10 @@
           <span class="timeline__time">2020.07 — 2022.06</span>
         </div>
         <h3 class="timeline__role">Java 研发工程师</h3>
-        <p class="timeline__org">智慧城市 IoT 平台</p>
+        <p class="timeline__org">智慧城市 IoT 平台方向</p>
         <ul class="timeline__points">
-          <li>设计物联网数据中台，实现大规模水务 IoT 设备的实时监控与毫秒级预警。</li>
-          <li>搭建基于 InnoDB Cluster 的高可用 MySQL 集群；研发通用工单审批框架，复用至三个业务系统，审批开发耗时下降约 60%。</li>
+          <li>参与物联网数据中台设计，负责大规模 IoT 设备的实时监控与预警链路。</li>
+          <li>搭建高可用 MySQL 集群方案；设计可复用的通用工单审批框架。</li>
         </ul>
         <div class="timeline__stack">Java · Netty · MySQL HA · GIS</div>
       </li>
@@ -127,7 +132,7 @@
     </ol>
   </section>
 
-  <section class="section" id="skills">
+  <section class="section reveal" id="skills">
     <h2 class="section__title"><span class="section__num">03</span>技能</h2>
     <div class="skills-grid">
       <div class="skill-card">
@@ -140,39 +145,85 @@
       </div>
       <div class="skill-card">
         <h3>分布式与云原生</h3>
-        <p>分布式锁 / 幂等 / 补偿 · Kubernetes · 微服务（Spring Cloud Alibaba）· 消息队列</p>
+        <p>分布式锁 / 幂等 / 补偿 · Kubernetes · 微服务架构 · 消息队列</p>
       </div>
       <div class="skill-card">
         <h3>数据与可观测性</h3>
-        <p>MySQL / PostgreSQL / Redis / ClickHouse · Langfuse · CI/CD · 性能调优</p>
+        <p>MySQL / PostgreSQL / Redis / ClickHouse · 全链路追踪 · CI/CD · 性能调优</p>
       </div>
     </div>
   </section>
 
-  <section class="section" id="projects">
-    <h2 class="section__title"><span class="section__num">04</span>项目 & 兴趣</h2>
+  <section class="section reveal" id="knowledge">
+    <h2 class="section__title"><span class="section__num">04</span>知识体系</h2>
+    <div class="section__body">
+      <p>长期用自己的笔记系统沉淀技术知识，按领域持续积累，粗略统计如下：</p>
+    </div>
+    <div class="knowledge">
+      <div class="knowledge__group">
+        <span class="knowledge__group-title">后端与分布式系统</span>
+        <div class="knowledge__chips">
+          <span class="chip">Java <span class="chip__count">90+</span></span>
+          <span class="chip">数据库 <span class="chip__count">25+</span></span>
+          <span class="chip">架构设计 <span class="chip__count">12+</span></span>
+          <span class="chip">网络 <span class="chip__count">8+</span></span>
+          <span class="chip">操作系统 <span class="chip__count">6+</span></span>
+          <span class="chip">Go</span>
+          <span class="chip">Python</span>
+        </div>
+      </div>
+      <div class="knowledge__group">
+        <span class="knowledge__group-title">工程效能</span>
+        <div class="knowledge__chips">
+          <span class="chip">DevOps <span class="chip__count">35+</span></span>
+          <span class="chip">速查手册 <span class="chip__count">22+</span></span>
+          <span class="chip">工具链</span>
+        </div>
+      </div>
+      <div class="knowledge__group">
+        <span class="knowledge__group-title">AI / Agent</span>
+        <div class="knowledge__chips">
+          <span class="chip">上下文工程</span>
+          <span class="chip">Agent 架构</span>
+          <span class="chip">Claude Code 机制研究</span>
+        </div>
+      </div>
+      <div class="knowledge__group">
+        <span class="knowledge__group-title">算法</span>
+        <div class="knowledge__chips">
+          <span class="chip">算法笔记 <span class="chip__count">35+</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="projects">
+    <h2 class="section__title"><span class="section__num">05</span>项目 & 实践</h2>
+
+    <div class="knowledge__callout" style="margin-bottom: 1.5rem;">
+      长期坚持算法练习：<strong>500+ 题</strong>，覆盖 LeetCode / Codeforces / AtCoder 三个平台，
+      用 Python / Java / Go 三种语言分别实现；此外自学完成了 MIT <strong>6.824</strong>（分布式系统）课程的全部实验。
+    </div>
+
     <div class="projects-grid">
-      <article class="project-card">
-        <h3>Agent 并发编排与技能管理平台</h3>
-        <p>面向 AI 内容生产场景的 Agent 基础设施：并发会话编排、技能版本化管理、多沙箱环境调度与全链路可观测性。</p>
-      </article>
-      <article class="project-card">
-        <h3>企业级多 Agent BI 助理</h3>
-        <p>从数据分析助手演进为个人 AI 助理的多 Agent 系统，支持自然语言转 SQL、代码执行、图表生成与跨数据源查询。</p>
-      </article>
-      <article class="project-card">
-        <h3>LLM 驱动的研发工具链</h3>
-        <p>结合 LLM 与 CI/CD 打造的自动代码评审与自动化压测工具，帮助团队降低 QA 失败率、节省测试人力。</p>
-      </article>
       <article class="project-card">
         <h3>个人 AI Agent 工具体系</h3>
         <p>用 AI Agent 管理个人笔记、脚本与长期记忆的数字分身模板项目，开源在
           <a href="https://github.com/ZAKLLL/ezagent" target="_blank" rel="noopener">ezagent ↗</a>。</p>
       </article>
+      <article class="project-card project-card--muted">
+        <h3>LLM 驱动的代码评审工具</h3>
+        <p>基于大模型实现的自动化代码评审辅助工具，个人实践项目。</p>
+      </article>
       <article class="project-card">
         <h3>RPC 框架实践</h3>
-        <p>基于 SpringBoot 与 Netty 实现的高性能、低门槛、支持多序列化协议的 RPC 框架
+        <p>基于 SpringBoot 与 Netty 实现的高性能、支持多序列化协议的 RPC 框架
           <a href="https://github.com/ZAKLLL/NettyPRCSpringBoot" target="_blank" rel="noopener">NettyPRCSpringBoot ↗</a>。</p>
+      </article>
+      <article class="project-card">
+        <h3>设计模式实践</h3>
+        <p>Java 常用设计模式的学习与实现整理
+          <a href="https://github.com/ZAKLLL/HeadFirst" target="_blank" rel="noopener">HeadFirst ↗</a>。</p>
       </article>
       <article class="project-card">
         <h3>早期开源实践</h3>
@@ -183,11 +234,16 @@
           轻量工作流引擎练手项目。
         </p>
       </article>
+      <article class="project-card">
+        <h3>Golang 学习系列</h3>
+        <p>跟随经典教程从零实现 Go 常见组件的系列练习
+          <a href="https://github.com/ZAKLLL/7Days-golang" target="_blank" rel="noopener">7Days-golang ↗</a>。</p>
+      </article>
     </div>
   </section>
 
-  <section class="section section--contact" id="contact">
-    <h2 class="section__title"><span class="section__num">05</span>联系</h2>
+  <section class="section section--contact reveal" id="contact">
+    <h2 class="section__title"><span class="section__num">06</span>联系</h2>
     <p class="contact__text">最活跃的地方是 GitHub，欢迎来聊代码、Agent 基础设施，或者随便一个有意思的想法。</p>
     <a class="btn btn--primary" href="https://github.com/ZAKLLL" target="_blank" rel="noopener">github.com/ZAKLLL ↗</a>
   </section>
