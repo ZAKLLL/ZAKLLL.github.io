@@ -10,7 +10,7 @@
 - 🚀 正在做：Agent Runtime、上下文压缩、长期记忆、Workspace 与可恢复执行
 - 🌱 感兴趣：Agent Runtime 设计、上下文工程、可观测性（Langfuse）
 - ✍️ 偶尔写点关于 Agentic 编程工具的技术笔记
-- 🔗 完整介绍：[个人主页](https://zaklll.github.io/ZAKLLL/)（如已开启 GitHub Pages）
+- 🔗 完整介绍：[个人主页](https://zaklll.github.io/)
 - 📫 找我：GitHub Issues / PR 留言
 
 ## 主打项目
