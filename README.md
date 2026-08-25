@@ -1,15 +1,22 @@
-# zaklll.github.io
+# 你好，我是张家魁 / Zakl 👋
 
-个人主页源码，纯静态 `index.html` / `style.css` / `script.js`，无构建步骤，通过 GitHub Pages 直接发布。
+**AI Infrastructure Engineer · Agent Platform**
 
-此前是一个 2019 年搭建、之后未再更新的 Hexo 博客（`archives/`、`tags/`、`fonts/` 等构建产物），
-已整体替换为新的个人主页设计。旧博客仅有 2 篇技术笔记（Python/Springboot 自动部署、Integer 对象问题），
-未做保留，如需要可从 Git 历史（`master` 分支早期提交）中找回。
+5 年后端分布式系统经验，近 2 年专注于 LLM Agent 基础设施研发。
+主导过 Agent 并发编排引擎、技能 / 工具管理平台、多 Agent 协作系统的架构与落地，
+关注 Agent 的可靠性、可观测性与横向扩展能力。
 
-## 本地开发
+- 🔧 个人主线：[Z_Agent](https://github.com/ZAKLLL/zagent) —— 一个目标驱动、可恢复、可验证、支持人机协作的 Agentic Workbench（MIT License）
+- 🚀 正在做：Agent Runtime、上下文压缩、长期记忆、Workspace 与可恢复执行
+- 🌱 感兴趣：Agent Runtime 设计、上下文工程、可观测性（Langfuse）
+- ✍️ 偶尔写点关于 Agentic 编程工具的技术笔记
+- 🔗 完整介绍：[个人主页](https://zaklll.github.io/ZAKLLL/)（如已开启 GitHub Pages）
+- 📫 找我：GitHub Issues / PR 留言
 
-无需构建，直接用浏览器打开 `index.html`，或起一个静态文件服务器：
+## 主打项目
 
-```bash
-python3 -m http.server 8000
-```
+[Z_Agent](https://github.com/ZAKLLL/zagent) 是我正在维护的个人开源项目，定位为可恢复的 Agentic Workbench。
+它围绕 Agent Runtime 和 Goal / Run / Task 执行，逐步整合 Canvas、HITL、Context Compaction、Memory
+与 Workspace，关注复杂任务在长上下文、工具调用和人工介入下的连续性与可恢复性。
+
+[![我的 GitHub 数据](https://github-readme-stats.vercel.app/api?username=ZAKLLL&theme=dark&hide_border=true)](https://github.com/ZAKLLL)
