@@ -10,6 +10,7 @@
 
 - 🔧 个人主线：[Z_Agent](https://github.com/ZAKLLL/zagent) —— 一个目标驱动、可恢复、可验证、支持人机协作的 Agentic Workbench（MIT License）
 - 🧠 AI Agent Infra：Runtime、长程任务、异步事件、子代理、上下文与可恢复执行
+- 🧩 Agent 技术栈：Claude Code SDK、LangChain、MCP，以及围绕它们构建的 Runtime 与工具系统
 - 🧱 技术底座：Spring Boot / Spring Cloud、微服务、Kubernetes、分布式系统与云原生工程
 - 🚀 正在做：Agent Runtime、上下文压缩、长期记忆、Workspace 与可恢复执行
 - 🌱 感兴趣：Agent Runtime 设计、上下文工程、可观测性与运行分析
